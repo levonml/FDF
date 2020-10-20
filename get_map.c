@@ -12,7 +12,6 @@
 
 #include <unistd.h>
 #include <fcntl.h>
-//#include "libft/includes/libft.h"
 #include "fdf.h"
 #include <stdio.h>
 #include <stdlib.h>
