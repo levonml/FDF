@@ -9,11 +9,8 @@ typedef struct	s_data
   int	step;
   int	p;
   int	count;
-  int	i;
   int x;
   int y;
-  int x1;
-  int y1;
 }		t_data;
 typedef struct	s_iso
 {
@@ -21,7 +18,7 @@ typedef struct	s_iso
   int		y;
   struct s_iso	*next;
 }		t_iso;
-t_list		*get_map(int fd);
+t_list		*get_map(int fd, t_data data, t_list *temp);
 void		drow_line(int x1, int y1, int x2, int y2, t_data data);
 t_iso		*create_list(t_list *temp, t_data data);
 #endif

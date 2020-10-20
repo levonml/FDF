@@ -36,23 +36,19 @@ int	*convert(char *str, int *count)
   
 }
 
-t_list	*get_map(int fd)
+t_list	*get_map(int fd, t_data data, t_list *map)
 {
-  size_t	count;
-  char		*line;
-  t_list        *map;
   t_list      	*temp;
   t_list       	*curr_node;
+  char		*line;
   int		*line_int;
-  int		*n;
-  int		len;
 
-  count = 0;
+  data.count = 0;
   while (get_next_line(fd, &line) == 1)
     {
-      line_int = convert(line, &len);
-      curr_node = ft_lstnew(line_int, len);
-      if (count == 0)
+      line_int = convert(line, &data.x);
+      curr_node = ft_lstnew(line_int, data.x);
+      if (data.count == 0)
 	{
         temp = curr_node;
 	map = temp;
@@ -62,9 +58,9 @@ t_list	*get_map(int fd)
 	  temp->next = curr_node;
 	  temp = curr_node;
 	}
-      count++;
+          free(line);
+      data.count++;
     }
   temp = map;
-  free(line);
   return (map);
 }

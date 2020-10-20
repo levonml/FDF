@@ -3,7 +3,7 @@
 
 int x_iso(int x, int y)
 {
-  return((2*x - 2*y) * 12 + 250);
+  return((2*x - 2*y) * 15 + 400);
 }
 
 int y_iso(t_list *map, int count, int x, int y)
@@ -11,7 +11,7 @@ int y_iso(t_list *map, int count, int x, int y)
   int *n;
   
   n = (int *)map->content; 
-  return((x + y - n[count]/6) * 12 + 250);
+  return((x + y - n[count]*2) * 9 + 250);
   
 }
 
