@@ -56,7 +56,12 @@ void	drow_grid(t_list *temp, t_data data)
   ord = next_row(temp, iso);
   final(iso, abs, ord, temp, data);
 }
-
+int		exit_prog(int key, void *param)
+{
+	if (key == 53)
+		exit(0);
+	return (0);
+	}
 int	main(int argc, char **argv)
 {
   t_list	*temp;
@@ -64,19 +69,28 @@ int	main(int argc, char **argv)
   t_list        *map;
   int           fd;
   
-  if (argc == 1 )
-    fd = 0;
+  if (argc == 1)
+  {
+	  fd = 0;
+	  printf("argument is missing\nusage: ./fdf file_name\n");
+  }
   else
     {
       fd = open(argv[1], O_RDONLY);
       if (fd == -1)
-	printf("error N %d", errno);
+	  {
+		  printf ("file opening error");
+		  return(0);
+	  }
     }
   map = get_map(fd, data, temp);
   close(fd);
   data.mlx_ptr = mlx_init();
-  data.win_ptr = mlx_new_window(data.mlx_ptr, 1000, 1000, "mlx 42");
+  data.win_ptr = mlx_new_window(data.mlx_ptr, 1000, 1000, "fdf pateh-unpateh");
   drow_grid(map, data);
+//  mlx_key_hook(data.win_ptr, exit_prog, (void *)0);
+//   mlx_key_hook(data.win_ptr, isometrik, (void *)0);
   mlx_loop(data.mlx_ptr);
+ 
   return (0);
 }

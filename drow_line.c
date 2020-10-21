@@ -28,15 +28,18 @@ void drow_low(int x1, int y1, int x2, int y2, t_data data)
     data.p = 2 * dy - dx;
     while (x1 <= x2)
       {
-	mlx_pixel_put(data.mlx_ptr, data.win_ptr, x1, y1, 0xff0000);
-	x1++;
-	if (data.p < 0)
-	  data.p = data.p + 2 * dy;
-	else
-	  {
-	    data.p = data.p + 2 * dy - 2 * dx;
-	    y1 = y1 + data.step;
-	  }
+//		  if (y1 == 0)
+		  //		  mlx_pixel_put(data.mlx_ptr, data.win_ptr, x1, y1, 0x00CD6F);
+		  //  else
+			  mlx_pixel_put(data.mlx_ptr, data.win_ptr, x1, y1, 0xff0000);
+		  x1++;
+		  if (data.p < 0)
+			  data.p = data.p + 2 * dy;
+		  else
+		  {
+			  data.p = data.p + 2 * dy - 2 * dx;
+			  y1 = y1 + data.step;
+		  }
       }
   }
 void drow_high(int x1, int y1, int x2, int y2, t_data data)
