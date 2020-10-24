@@ -36,9 +36,9 @@ int	*convert(char *str, int *count)
   
 }
 
-t_list	*get_map(int fd, t_data data, t_list *map)
+t_list	*get_map(int fd, t_data data, t_list *temp)
 {
-  t_list      	*temp;
+  t_list      	*map;
   t_list       	*curr_node;
   char		*line;
   int		*line_int;
@@ -62,5 +62,6 @@ t_list	*get_map(int fd, t_data data, t_list *map)
       data.count++;
     }
   temp = map;
+  printf("jallaaaaaaaaa = %zu\n", temp->content_size);
   return (map);
 }

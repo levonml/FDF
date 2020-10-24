@@ -2,6 +2,8 @@
 #define FDF_H
 #include "libft/libft.h"
 #include "mlx.h"
+
+
 typedef struct	s_data
 {
   void 	*mlx_ptr;
@@ -12,13 +14,22 @@ typedef struct	s_data
   int x;
   int y;
 }		t_data;
-typedef struct	s_iso
+typedef struct  s_iso
 {
-  int		x;
-  int		y;
-  struct s_iso	*next;
-}		t_iso;
+  int           x;
+  int           y;
+  struct s_iso  *next;
+}               t_iso;
+typedef struct	s_param
+{
+  int step;
+  t_data	data;
+  t_list	*map;
+  t_iso		*iso;
+  t_iso		*plan;
+}		t_param;
 t_list		*get_map(int fd, t_data data, t_list *temp);
 void		drow_line(int x1, int y1, int x2, int y2, t_data data);
 t_iso		*create_list(t_list *temp, t_data data);
+t_iso		*create_plan(t_list *temp, t_data data);
 #endif

@@ -4,6 +4,7 @@ make:
 #	clang -o fdf main.c get_map.c libft/get_next_line.o -I libft/includes\
 #	-L libft/ -lft -I /usr/local/include -L /usr/local/lib/ -lmlx  \
 #	-L /usr/lib/x86_64-linux-gnu -lXext -L /usr/lib/x86_64-linux-gnu -lX11
-	clang  -o fdf main.c get_map.c drow_line.c create_list.c libft/get_next_line.o -I libft/includes -L libft/ -lft -I /usr/local/include -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
+	clang  -o fdf main.c get_map.c drow_line.c create_list.c create_plan.c libft/get_next_line.o -I libft/includes -L libft/ -lft -I /usr/local/include -L /usr/local/lib/ -lmlx -L /usr/lib/x86_64-linux-gnu -lXext -L /usr/lib/x86_64-linux-gnu -lX11
+
 fclean:
 	rm -rf *~ *.o
