@@ -28,12 +28,12 @@ void	listdel(t_list *head)
 	}
 }
 
-t_iso	*next_row(t_list *temp, t_iso *ord)
+t_iso	*next_row(t_list *map, t_iso *ord)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < temp->content_size)
+	while (i < map->content_size)
 	{
 		ord = ord->next;
 		i++;
@@ -41,7 +41,7 @@ t_iso	*next_row(t_list *temp, t_iso *ord)
 	return (ord);
 }
 
-void	drow_grid(t_param *param)
+void	drow_iso(t_param *param)
 {
 	t_iso	*abs;
 	t_iso	*ord;
@@ -50,10 +50,10 @@ void	drow_grid(t_param *param)
 	abs = param->iso;
 	ord = next_row(param->map, param->iso);
 	final(abs, ord, param->data);
-	//  listdel(param->map);
+        // listdel(param->map);
 }
 
-void	drow_grid1(t_param *param)
+void	drow_plan(t_param *param)
 {
 	t_iso	*abs;
 	t_iso	*ord;
@@ -86,7 +86,7 @@ int		main(int argc, char **argv)
 	param->data.mlx_ptr = mlx_init();
 	param->data.win_ptr = mlx_new_window(param->data.mlx_ptr,\
 	1000, 1000, "fdf");
-	param->iso = list_isometrik(param->map, param->data, param->iso, param->map1);
+	param->iso = list_iso(param->map, param->data, param->iso, param->map1);
 	param->plan = list_plan(param->map, param->data, param->plan, param->map1);
 	mlx_key_hook(param->data.win_ptr, key_control, param);
 	mlx_loop(param->data.mlx_ptr);

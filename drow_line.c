@@ -19,14 +19,14 @@ int		abs(int a)
 	return (a);
 }
 
-void	drow_low(int x1, int y1, int x2, int y2, t_data data)
+void	drow_low(t_iso m1, t_iso m2, t_data data)
 {
 	int dx;
 	int dy;
 	int p;
 
-	dx = x2 - x1;
-	dy = y2 - y1;
+	dx = m2.x - m1.x;
+	dy = m2.y - m1.y;
 	data.step = 1;
 	if (dy < 0)
 	{
@@ -34,28 +34,28 @@ void	drow_low(int x1, int y1, int x2, int y2, t_data data)
 		dy = -dy;
 	}
 	p = 2 * dy - dx;
-	while (x1 <= x2)
+	while (m1.x <= m2.x)
 	{
-		mlx_pixel_put(data.mlx_ptr, data.win_ptr, x1, y1, 0x32cd32);
-		x1++;
+		mlx_pixel_put(data.mlx_ptr, data.win_ptr, m1.x, m1.y, 0x32cd32);
+		m1.x++;
 		if (p < 0)
 			p = p + 2 * dy;
 		else
 		{
 			p = p + 2 * dy - 2 * dx;
-			y1 = y1 + data.step;
+			m1.y = m1.y + data.step;
 		}
 	}
 }
 
-void	drow_high(int x1, int y1, int x2, int y2, t_data data)
+void	drow_high(t_iso m1, t_iso m2, t_data data)
 {
 	int	dx;
 	int	dy;
 	int	p;
 
-	dx = x2 - x1;
-	dy = y2 - y1;
+	dx = m2.x - m1.x;
+	dy = m2.y - m1.y;
 	data.step = 1;
 	if (dx < 0)
 	{
@@ -63,34 +63,34 @@ void	drow_high(int x1, int y1, int x2, int y2, t_data data)
 		dx = -dx;
 	}
 	p = 2 * dx - dy;
-	while (y1 <= y2)
+	while (m1.y <= m2.y)
 	{
-		mlx_pixel_put(data.mlx_ptr, data.win_ptr, x1, y1, 0x32cd32);
-		y1++;
+		mlx_pixel_put(data.mlx_ptr, data.win_ptr, m1.x, m1.y, 0x32cd32);
+		m1.y++;
 		if (p < 0)
 			p = p + 2 * dx;
 		else
 		{
 			p = p + 2 * dx - 2 * dy;
-			x1 = x1 + data.step;
+			m1.x = m1.x + data.step;
 		}
 	}
 }
 
-void	drow_line(int x1, int y1, int x2, int y2, t_data data)
+void	drow_line(t_iso m1, t_iso m2, t_data data)
 {
-	if (abs(y2 - y1) < abs(x2 - x1))
+	if (abs(m2.y - m1.y) < abs(m2.x - m1.x))
 	{
-		if (x1 > x2)
-			drow_low(x2, y2, x1, y1, data);
+		if (m1.x > m2.x)
+			drow_low(m2, m1, data);
 		else
-			drow_low(x1, y1, x2, y2, data);
+			drow_low(m1, m2, data);
 	}
 	else
 	{
-		if (y1 > y2)
-			drow_high(x2, y2, x1, y1, data);
+		if (m1.y > m2.y)
+			drow_high(m2, m1, data);
 		else
-			drow_high(x1, y1, x2, y2, data);
+			drow_high(m1, m2, data);
 	}
 }

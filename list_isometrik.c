@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include "fdf.h"
 
 int		x_i(t_data data)
@@ -48,7 +47,7 @@ t_iso	*node(int x, int y, size_t content_size)
 	return (iso);
 }
 
-t_iso	*list_isometrik(t_list *m, t_data data, t_iso *iso, t_list *temp)
+t_iso	*list_iso(t_list *m, t_data data, t_iso *iso, t_list *temp)
 {
 	t_iso	*temp_iso;
 	t_iso	*curr_node;

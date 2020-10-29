@@ -16,16 +16,14 @@
 int	key_control(int key, void *param)
 {
 	t_param	*temp;
-	t_param *temp1;
 
 	temp = (t_param *)param;
-	drow_grid1(temp);
-	if (key == 53)
+	drow_plan(temp);
+	if (key == 65307)
 		exit(0);
-	if (key == 50)
+	if (key == 65363)
 	{
-		temp1 = temp;
-		drow_grid(temp1);
+	  drow_iso(temp);
 	}
 	return (0);
 }
