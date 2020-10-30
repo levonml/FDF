@@ -15,25 +15,37 @@
 #include "fdf.h"
 #include <fcntl.h>
 
-void	listdel(t_list *head)
+#include<stdio.h>
+
+void	listdel(t_list *head)//, t_iso *head1)
 {
 	t_list	*temp;
+	//	t_list *temp1;
 
+	//temp1 = temp;
 	while (head)
 	{
 		temp = head;
 		head = head->next;
+		free(temp->content);
 		free(temp);
 		temp = NULL;
 	}
+	/*while (head1)
+	  {
+	    temp1 = head1;
+	    head1 = head1->next;
+	    free(temp1);
+	    temp = NULL;
+	    }*/
 }
 
-t_iso	*next_row(t_list *map, t_iso *ord)
+t_iso	*next_row(t_iso *ord)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < map->content_size)
+	while (i < ord->content_size)
 	{
 		ord = ord->next;
 		i++;
@@ -48,7 +60,7 @@ void	drow_iso(t_param *param)
 
 	mlx_clear_window(param->data.mlx_ptr, param->data.win_ptr);
 	abs = param->iso;
-	ord = next_row(param->map, param->iso);
+	ord = next_row(param->iso);
 	final(abs, ord, param->data);
         // listdel(param->map);
 }
@@ -60,21 +72,22 @@ void	drow_plan(t_param *param)
 
 	mlx_clear_window(param->data.mlx_ptr, param->data.win_ptr);
 	abs = param->plan;
-	ord = next_row(param->map, param->plan);
+	ord = next_row(param->plan);
 	final(abs, ord, param->data);
-	//listdel(param->map);
+	//		listdel(param->map);
 }
 
 int		main(int argc, char **argv)
 {
 	t_param	*param;
 
+	param = NULL;
 	if (argc < 2)
 	{
 		ft_putstr("argument is missing\nusage: ./fdf file_name\n");
 		return (0);
 	}
-	if (!(param = (t_param *)malloc(sizeof(param))))
+		if (!(param = (t_param *)malloc(sizeof(param))))
 		return (0);
 	if ((param->fd = open(argv[1], O_RDONLY)) && param->fd == -1)
 	{
@@ -89,6 +102,12 @@ int		main(int argc, char **argv)
 	param->iso = list_iso(param->map, param->data, param->iso, param->map1);
 	param->plan = list_plan(param->map, param->data, param->plan, param->map1);
 	mlx_key_hook(param->data.win_ptr, key_control, param);
+	//		printf("param->map = %d\n", ((int *)param->map->content)[3]);
+	//listdel (param->map, param->iso);
+	//listdel (param->map, param->plan);
+	//free(param);
 	mlx_loop(param->data.mlx_ptr);
-	return (0);
+	//		listdel (param->map, param->iso);
+		//exit(0);
+		return (0);
 }

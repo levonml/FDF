@@ -12,8 +12,26 @@
 
 #include "fdf.h"
 
-void	final(t_iso *abs, t_iso *ord, t_data data)
+#include <stdlib.h>
+void    iso_listdel(t_iso *head)                                                                                                                 
+{                                                                                                                                                  
+        t_iso  *temp;                                                                                                                             
+                                                                                                                                                   
+                                                                                                                                                   
+        while (head)                                                                                                                               
+        {                                                                                                                                          
+                temp = head;                                                                                                                       
+                head = head->next;                                                                                                                                free(temp);                                                                                                                        
+                temp = NULL;                                                                                                                       
+	}
+}
+
+void	final(t_iso *abs1, t_iso *ord, t_data data)
 {
+  t_iso *abs;
+
+  abs = abs1;
+  
 	while (ord)
 	{
 		data.count = 1;
@@ -36,4 +54,5 @@ void	final(t_iso *abs, t_iso *ord, t_data data)
 		abs = abs->next;
 		data.count++;
 	}
+	//		iso_listdel(abs1);
 }

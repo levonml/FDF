@@ -18,7 +18,7 @@ int		x_i(t_data data)
 	int zoom;
 
 	zoom = 15;
-	return ((2 * data.x - 2 * data.y) * zoom + 400);
+	return (( data.x -  data.y) * 2 * zoom + 400);
 }
 
 int		y_i(t_list *map, t_data data)
@@ -54,18 +54,18 @@ t_iso	*list_iso(t_list *m, t_data data, t_iso *iso, t_list *temp)
 
 	temp = m;
 	data.y = 0;
-	while (m)
+	while (temp)
 	{
 		data.x = 0;
-		while (data.x < m->content_size)
+		while (data.x < temp->content_size)
 		{
-			curr_node = node(x_i(data), y_i(m, data), m->content_size);
+			curr_node = node(x_i(data), y_i(temp, data), temp->content_size);
 			if (data.x == 0 && data.y == 0)
 			{
 				temp_iso = curr_node;
-				iso = temp_iso;
+				iso = curr_node;
 			}
-			else
+				else
 			{
 				temp_iso->next = curr_node;
 				temp_iso = curr_node;
@@ -73,8 +73,8 @@ t_iso	*list_iso(t_list *m, t_data data, t_iso *iso, t_list *temp)
 			data.x++;
 		}
 		data.y++;
-		m = m->next;
+		temp = temp->next;
 	}
-	//listdel(temp);
+	//		listdel(m);
 	return (iso);
 }

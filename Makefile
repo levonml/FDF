@@ -5,7 +5,7 @@ FLAGS = -Wall -Wextra -Werror
 all: fdf
 fdf: $(OBJ)
 	make -C libft
-	clang  $(FLAGS) -o fdf $(OBJ) -L libft/ -lft -I /usr/local/include -L /usr/local/lib/ -lmlx -L /usr/lib/x86_64-linux-gnu -lXext -L /usr/lib/x86_64-linux-gnu -lX11
+	clang  $(FLAGS) -g -o fdf $(OBJ) -L libft/ -lft -I /usr/local/include -L /usr/local/lib/ -lmlx -L /usr/lib/x86_64-linux-gnu -lXext -L /usr/lib/x86_64-linux-gnu -lX11
 
 $(OBJ): %.o: %.c fdf.h
 	clang $(FLAGS) -c $<

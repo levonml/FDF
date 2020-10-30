@@ -14,9 +14,11 @@
 #include "fdf.h"
 #include <stdlib.h>
 
+#include<stdio.h>
+
 int		*convert(char *str, size_t *count)
 {
-	int		*arr;
+	int    	*arr;
 	char	**split;
 
 	if (!(split = ft_strsplit(str, ' ')))
@@ -30,9 +32,11 @@ int		*convert(char *str, size_t *count)
 	while (split[*count])
 	{
 		arr[*count] = ft_atoi(split[*count]);
+		free(split[*count]);
+		split[*count] = NULL;
 		(*count)++;
 	}
-	ft_memdel((void **)split);
+	free(split);
 	return (arr);
 }
 
@@ -40,7 +44,7 @@ t_list	*get_map(int fd, t_data data, t_list *map, t_list *temp)
 {
 	t_list	*curr_node;
 	char	*line;
-	int		*line_int;
+	int    	*line_int;
 
 	data.count = 0;
 	while (get_next_line(fd, &line) == 1)
@@ -61,6 +65,5 @@ t_list	*get_map(int fd, t_data data, t_list *map, t_list *temp)
 		free(line);
 		data.count++;
 	}
-	temp = map;
 	return (map);
 }

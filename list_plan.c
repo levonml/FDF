@@ -34,12 +34,12 @@ t_iso	*list_plan(t_list *map, t_data data, t_iso *plan, t_list *temp)
 
 	temp = map;
 	data.y = 0;
-	while (map)
+	while (temp)
 	{
 		data.x = 0;
-		while (data.x < map->content_size)
+		while (data.x < temp->content_size)
 		{
-			curr_node = node(x_p(data), y_p(map, data), map->content_size);
+			curr_node = node(x_p(data), y_p(temp, data), temp->content_size);
 			if (data.x == 0 && data.y == 0)
 			{
 				temp_plan = curr_node;
@@ -53,8 +53,8 @@ t_iso	*list_plan(t_list *map, t_data data, t_iso *plan, t_list *temp)
 			data.x++;
 		}
 		data.y++;
-		map = map->next;
+		temp = temp->next;
 	}
-	//  listdel(temp);
+	listdel(map);
 	return (plan);
 }

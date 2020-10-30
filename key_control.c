@@ -16,14 +16,18 @@
 int	key_control(int key, void *param)
 {
 	t_param	*temp;
-
+	t_param *temp1;
+	
 	temp = (t_param *)param;
-	drow_plan(temp);
+	temp1 = temp;
+	drow_iso(temp);
 	if (key == 65307)
 		exit(0);
 	if (key == 65363)
 	{
-	  drow_iso(temp);
+	  drow_plan(temp);
 	}
+	//listdel(temp1->map, temp1->iso);
+	//free(temp);
 	return (0);
 }
