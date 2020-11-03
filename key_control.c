@@ -27,7 +27,8 @@ int	key_control(int key, void *param)
 	{
 	  drow_plan(temp);
 	}
-	//listdel(temp1->map, temp1->iso);
-	//free(temp);
+	
+	//free(temp->map);
+       //temp->map = NULL;
 	return (0);
 }

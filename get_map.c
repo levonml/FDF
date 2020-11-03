@@ -33,7 +33,7 @@ int		*convert(char *str, size_t *count)
 	{
 		arr[*count] = ft_atoi(split[*count]);
 		free(split[*count]);
-		split[*count] = NULL;
+		//split[*count] = NULL;
 		(*count)++;
 	}
 	free(split);
@@ -45,7 +45,7 @@ t_list	*get_map(int fd, t_data data, t_list *map, t_list *temp)
 	t_list	*curr_node;
 	char	*line;
 	int    	*line_int;
-
+	
 	data.count = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
@@ -63,6 +63,7 @@ t_list	*get_map(int fd, t_data data, t_list *map, t_list *temp)
 			temp = curr_node;
 		}
 		free(line);
+		line = NULL;
 		data.count++;
 	}
 	return (map);

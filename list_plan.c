@@ -53,8 +53,7 @@ t_iso	*list_plan(t_list *map, t_data data, t_iso *plan, t_list *temp)
 			data.x++;
 		}
 		data.y++;
-		temp = temp->next;
+	       	temp = temp->next;
 	}
-	listdel(map);
 	return (plan);
 }

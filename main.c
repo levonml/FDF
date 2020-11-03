@@ -19,18 +19,29 @@
 
 void	listdel(t_list *head)//, t_iso *head1)
 {
-	t_list	*temp;
+  t_list	*temp;
+  temp = head;
+	if(head == NULL)
+	  return;
+	listdel(temp->next);
+       	free(temp->content);
+	free(temp);
+	/*	t_list *p;
+	p = head;
 	//	t_list *temp1;
 
 	//temp1 = temp;
-	while (head)
+	while (p)
 	{
-		temp = head;
-		head = head->next;
-		free(temp->content);
-		free(temp);
-		temp = NULL;
-	}
+	  //temp = head;
+		temp = p->next;
+		//free(temp->content);
+		//temp->content = NULL;
+		//	free(p->content);
+		//p->content = NULL;
+	       	free(p);
+		p = temp;
+		}*/
 	/*while (head1)
 	  {
 	    temp1 = head1;
@@ -62,7 +73,6 @@ void	drow_iso(t_param *param)
 	abs = param->iso;
 	ord = next_row(param->iso);
 	final(abs, ord, param->data);
-        // listdel(param->map);
 }
 
 void	drow_plan(t_param *param)
@@ -74,7 +84,6 @@ void	drow_plan(t_param *param)
 	abs = param->plan;
 	ord = next_row(param->plan);
 	final(abs, ord, param->data);
-	//		listdel(param->map);
 }
 
 int		main(int argc, char **argv)
@@ -102,12 +111,6 @@ int		main(int argc, char **argv)
 	param->iso = list_iso(param->map, param->data, param->iso, param->map1);
 	param->plan = list_plan(param->map, param->data, param->plan, param->map1);
 	mlx_key_hook(param->data.win_ptr, key_control, param);
-	//		printf("param->map = %d\n", ((int *)param->map->content)[3]);
-	//listdel (param->map, param->iso);
-	//listdel (param->map, param->plan);
-	//free(param);
 	mlx_loop(param->data.mlx_ptr);
-	//		listdel (param->map, param->iso);
-		//exit(0);
-		return (0);
+	return (0);
 }

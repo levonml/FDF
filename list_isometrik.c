@@ -75,6 +75,5 @@ t_iso	*list_iso(t_list *m, t_data data, t_iso *iso, t_list *temp)
 		data.y++;
 		temp = temp->next;
 	}
-	//		listdel(m);
 	return (iso);
 }
