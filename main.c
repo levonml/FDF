@@ -6,7 +6,7 @@
 /*   By: lstepany <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 19:42:23 by lstepany          #+#    #+#             */
-/*   Updated: 2020/10/27 21:18:26 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/11/03 12:15:47 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,16 @@
 #include "fdf.h"
 #include <fcntl.h>
 
-#include<stdio.h>
-
-void	listdel(t_list *head)//, t_iso *head1)
+void	listdel(t_list *head)
 {
-  t_list	*temp;
-  temp = head;
-	if(head == NULL)
-	  return;
-	listdel(temp->next);
-       	free(temp->content);
-	free(temp);
-	/*	t_list *p;
-	p = head;
-	//	t_list *temp1;
+	t_list	*temp;
 
-	//temp1 = temp;
-	while (p)
-	{
-	  //temp = head;
-		temp = p->next;
-		//free(temp->content);
-		//temp->content = NULL;
-		//	free(p->content);
-		//p->content = NULL;
-	       	free(p);
-		p = temp;
-		}*/
-	/*while (head1)
-	  {
-	    temp1 = head1;
-	    head1 = head1->next;
-	    free(temp1);
-	    temp = NULL;
-	    }*/
+	temp = head;
+	if (head == NULL)
+		return ;
+	listdel(temp->next);
+	free(temp->content);
+	free(temp);
 }
 
 t_iso	*next_row(t_iso *ord)
@@ -96,7 +72,7 @@ int		main(int argc, char **argv)
 		ft_putstr("argument is missing\nusage: ./fdf file_name\n");
 		return (0);
 	}
-		if (!(param = (t_param *)malloc(sizeof(param))))
+	if (!(param = (t_param *)malloc(sizeof(param))))
 		return (0);
 	if ((param->fd = open(argv[1], O_RDONLY)) && param->fd == -1)
 	{

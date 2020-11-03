@@ -6,7 +6,7 @@
 /*   By: lstepany <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 21:19:53 by lstepany          #+#    #+#             */
-/*   Updated: 2020/10/27 21:23:11 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/11/03 12:40:24 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	key_control(int key, void *param)
 {
 	t_param	*temp;
 	t_param *temp1;
-	
+
 	temp = (t_param *)param;
 	temp1 = temp;
 	drow_iso(temp);
@@ -25,10 +25,7 @@ int	key_control(int key, void *param)
 		exit(0);
 	if (key == 65363)
 	{
-	  drow_plan(temp);
+		drow_plan(temp);
 	}
-	
-	//free(temp->map);
-       //temp->map = NULL;
 	return (0);
 }

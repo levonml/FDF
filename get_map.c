@@ -6,7 +6,7 @@
 /*   By: lstepany <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 20:04:48 by lstepany          #+#    #+#             */
-/*   Updated: 2020/10/27 20:36:01 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/11/03 12:17:19 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 #include "fdf.h"
 #include <stdlib.h>
 
-#include<stdio.h>
-
 int		*convert(char *str, size_t *count)
 {
-	int    	*arr;
+	int		*arr;
 	char	**split;
 
 	if (!(split = ft_strsplit(str, ' ')))
@@ -33,7 +31,6 @@ int		*convert(char *str, size_t *count)
 	{
 		arr[*count] = ft_atoi(split[*count]);
 		free(split[*count]);
-		//split[*count] = NULL;
 		(*count)++;
 	}
 	free(split);
@@ -44,8 +41,8 @@ t_list	*get_map(int fd, t_data data, t_list *map, t_list *temp)
 {
 	t_list	*curr_node;
 	char	*line;
-	int    	*line_int;
-	
+	int		*line_int;
+
 	data.count = 0;
 	while (get_next_line(fd, &line) == 1)
 	{

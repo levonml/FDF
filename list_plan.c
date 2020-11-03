@@ -6,7 +6,7 @@
 /*   By: lstepany <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 20:59:17 by lstepany          #+#    #+#             */
-/*   Updated: 2020/10/27 21:19:27 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/11/03 12:27:11 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_iso	*list_plan(t_list *map, t_data data, t_iso *plan, t_list *temp)
 			data.x++;
 		}
 		data.y++;
-	       	temp = temp->next;
+		temp = temp->next;
 	}
 	return (plan);
 }

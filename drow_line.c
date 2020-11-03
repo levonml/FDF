@@ -6,25 +6,11 @@
 /*   By: lstepany <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 21:24:47 by lstepany          #+#    #+#             */
-/*   Updated: 2020/10/27 21:32:56 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/11/03 12:37:36 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-/*void    iso_listdel(t_iso *head)                                                                                                     
-{
-        t_list  *temp;
-                                                                                                                             
-
-        while (head)
-        {
-                temp = head;
-		head = head->next;
-                free(temp->content);
-                free(temp);
-                temp = NULL;
-		}*/
-
 
 int		abs(int a)
 {
@@ -107,5 +93,4 @@ void	drow_line(t_iso m1, t_iso m2, t_data data)
 		else
 			drow_high(m1, m2, data);
 	}
-	//	iso_listdel(m1);
 }

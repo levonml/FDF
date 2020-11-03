@@ -6,7 +6,7 @@
 /*   By: lstepany <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 20:22:29 by lstepany          #+#    #+#             */
-/*   Updated: 2020/10/27 21:14:30 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/11/03 12:26:16 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		x_i(t_data data)
 	int zoom;
 
 	zoom = 15;
-	return (( data.x -  data.y) * 2 * zoom + 400);
+	return ((data.x - data.y) * 2 * zoom + 400);
 }
 
 int		y_i(t_list *map, t_data data)
@@ -65,7 +65,7 @@ t_iso	*list_iso(t_list *m, t_data data, t_iso *iso, t_list *temp)
 				temp_iso = curr_node;
 				iso = curr_node;
 			}
-				else
+			else
 			{
 				temp_iso->next = curr_node;
 				temp_iso = curr_node;
