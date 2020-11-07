@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-int		abs(int a)
+int		ft_abs(float a)
 {
 	if (a < 0)
 		return (-a);
@@ -21,9 +21,9 @@ int		abs(int a)
 
 void	drow_low(t_iso m1, t_iso m2, t_data data)
 {
-	int dx;
-	int dy;
-	int p;
+	float dx;
+	float dy;
+	float p;
 
 	dx = m2.x - m1.x;
 	dy = m2.y - m1.y;
@@ -36,7 +36,7 @@ void	drow_low(t_iso m1, t_iso m2, t_data data)
 	p = 2 * dy - dx;
 	while (m1.x <= m2.x)
 	{
-		mlx_pixel_put(data.mlx_ptr, data.win_ptr, m1.x, m1.y, 0x32cd32);
+		mlx_pixel_put(data.mlx_ptr, data.win_ptr, m1.x, m1.y, COLOR);
 		m1.x++;
 		if (p < 0)
 			p = p + 2 * dy;
@@ -50,9 +50,9 @@ void	drow_low(t_iso m1, t_iso m2, t_data data)
 
 void	drow_high(t_iso m1, t_iso m2, t_data data)
 {
-	int	dx;
-	int	dy;
-	int	p;
+	float	dx;
+	float	dy;
+	float	p;
 
 	dx = m2.x - m1.x;
 	dy = m2.y - m1.y;
@@ -65,7 +65,7 @@ void	drow_high(t_iso m1, t_iso m2, t_data data)
 	p = 2 * dx - dy;
 	while (m1.y <= m2.y)
 	{
-		mlx_pixel_put(data.mlx_ptr, data.win_ptr, m1.x, m1.y, 0x32cd32);
+		mlx_pixel_put(data.mlx_ptr, data.win_ptr, m1.x, m1.y, COLOR);
 		m1.y++;
 		if (p < 0)
 			p = p + 2 * dx;
@@ -79,7 +79,7 @@ void	drow_high(t_iso m1, t_iso m2, t_data data)
 
 void	drow_line(t_iso m1, t_iso m2, t_data data)
 {
-	if (abs(m2.y - m1.y) < abs(m2.x - m1.x))
+	if (ft_abs(m2.y - m1.y) < ft_abs(m2.x - m1.x))
 	{
 		if (m1.x > m2.x)
 			drow_low(m2, m1, data);

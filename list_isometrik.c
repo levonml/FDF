@@ -15,27 +15,22 @@
 
 int		x_i(t_data data)
 {
-	int zoom;
-
-	zoom = 15;
-	return ((data.x - data.y) * 2 * zoom + 400);
+	return ((data.x - data.y) * ZOOM + 400);
 }
 
 int		y_i(t_list *map, t_data data)
 {
 	int *arr;
-	int	zoom;
 
-	zoom = 15;
 	arr = (int *)map->content;
-	return ((data.x + data.y - arr[data.x] * 2) * zoom + 300);
+	return ((data.x / 2 + (data.y - arr[(int)data.x] * Z) / 2) * ZOOM + 300);
 }
 
 t_iso	*node(int x, int y, size_t content_size)
 {
 	t_iso *iso;
 
-	while (!(iso = (t_iso *)malloc(sizeof(t_iso))))
+	while (!(iso = (t_iso *)malloc(sizeof(*iso))))
 	{
 		ft_putstr("failed to allocate mamory");
 		return (NULL);
@@ -47,32 +42,30 @@ t_iso	*node(int x, int y, size_t content_size)
 	return (iso);
 }
 
-t_iso	*list_iso(t_list *m, t_data data, t_iso *iso, t_list *temp)
+t_iso	*list_is(t_list *temp, t_data d, t_iso *iso, t_iso *temp_iso)
 {
-	t_iso	*temp_iso;
-	t_iso	*curr_node;
+	t_iso	*curr;
 
-	temp = m;
-	data.y = 0;
+	d.y = 0;
 	while (temp)
 	{
-		data.x = 0;
-		while (data.x < temp->content_size)
+		d.x = 0;
+		while (d.x < temp->content_size)
 		{
-			curr_node = node(x_i(data), y_i(temp, data), temp->content_size);
-			if (data.x == 0 && data.y == 0)
+			curr = node(x_i(d), y_i(temp, d), (temp->content_size - d.x - 1));
+			if (d.x == 0 && d.y == 0)
 			{
-				temp_iso = curr_node;
-				iso = curr_node;
+				temp_iso = curr;
+				iso = curr;
 			}
 			else
 			{
-				temp_iso->next = curr_node;
-				temp_iso = curr_node;
+				temp_iso->next = curr;
+				temp_iso = curr;
 			}
-			data.x++;
+			d.x++;
 		}
-		data.y++;
+		d.y++;
 		temp = temp->next;
 	}
 	return (iso);

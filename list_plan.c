@@ -11,12 +11,11 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include "fdf.h"
 
 int		x_p(t_data data)
 {
-	return (data.x * 35 + 200);
+	return (data.x * ZOOM + 200);
 }
 
 int		y_p(t_list *map, t_data data)
@@ -24,22 +23,20 @@ int		y_p(t_list *map, t_data data)
 	int		*n;
 
 	n = (int *)map->content;
-	return (data.y * 35 + 250);
+	return (data.y * ZOOM + 250);
 }
 
-t_iso	*list_plan(t_list *map, t_data data, t_iso *plan, t_list *temp)
+t_iso	*list_pl(t_list *temp, t_data data, t_iso *plan, t_iso *temp_plan)
 {
-	t_iso	*temp_plan;
 	t_iso	*curr_node;
 
-	temp = map;
 	data.y = 0;
 	while (temp)
 	{
 		data.x = 0;
 		while (data.x < temp->content_size)
 		{
-			curr_node = node(x_p(data), y_p(temp, data), temp->content_size);
+		  curr_node = node(x_p(data), y_p(temp, data), (temp->content_size - data.x - 1));
 			if (data.x == 0 && data.y == 0)
 			{
 				temp_plan = curr_node;

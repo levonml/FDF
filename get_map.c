@@ -14,23 +14,45 @@
 #include "fdf.h"
 #include <stdlib.h>
 
-int		*convert(char *str, size_t *count)
+int	validate_arr(char *arr)
 {
-	int		*arr;
+	int	i;
+
+	i = 0;
+	if ((arr[i] == '-' && (arr[i + 1] > '0' && arr[i + 1] <= '9'))	\
+	|| (arr[i] >= '0' && arr[i] <= '9'))
+		i++;
+	else
+	{
+		ft_putstr("invalid map");
+		exit(0);
+	}
+	return (i);
+}
+
+int	*convert(char *str, float *count)
+{
+	int	*arr;
 	char	**split;
 
 	if (!(split = ft_strsplit(str, ' ')))
 		return (NULL);
 	*count = 0;
-	while (split[*count])
+	while (split[(int)*count])
 		(*count)++;
 	if (!(arr = (int *)malloc(sizeof(int) * (*count))))
 		return (NULL);
 	*count = 0;
-	while (split[*count])
+	while (split[(int)*count])
 	{
-		arr[*count] = ft_atoi(split[*count]);
-		free(split[*count]);
+		validate_arr(split[(int)*count]);
+		arr[(int)*count] = ft_atoi(split[(int)*count]);
+		if (abs(arr[(int)*count]) > 30000)
+		{
+			ft_putstr("invalid map: 'z' value is out of scope\n");
+			exit(0);
+		}
+		free(split[(int)*count]);
 		(*count)++;
 	}
 	free(split);
@@ -40,14 +62,12 @@ int		*convert(char *str, size_t *count)
 t_list	*get_map(int fd, t_data data, t_list *map, t_list *temp)
 {
 	t_list	*curr_node;
-	char	*line;
-	int		*line_int;
 
 	data.count = 0;
-	while (get_next_line(fd, &line) == 1)
+	while (get_next_line(fd, &data.line) == 1)
 	{
-		if (!(line_int = convert(line, &data.x)) \
-	|| !(curr_node = ft_lstnew(line_int, data.x)))
+		if (!(data.line_int = convert(data.line, &data.x))	\
+		|| !(curr_node = ft_lstnew(data.line_int, data.x)))
 			return (NULL);
 		if (data.count == 0)
 		{
@@ -59,9 +79,10 @@ t_list	*get_map(int fd, t_data data, t_list *map, t_list *temp)
 			temp->next = curr_node;
 			temp = curr_node;
 		}
-		free(line);
-		line = NULL;
+		free(data.line);
 		data.count++;
 	}
+	if (get_next_line(fd, &data.line) == -1)
+		exit(0);
 	return (map);
 }

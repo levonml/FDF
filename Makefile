@@ -16,7 +16,7 @@ FLAGS = -Wall -Wextra -Werror
 all: fdf
 fdf: $(OBJ)
 	make -C libft
-	gcc  $(FLAGS) -g -o fdf $(OBJ) -L libft/ -lft -I /usr/local/include  -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
+	clang  $(FLAGS) -g -o fdf $(OBJ) -L libft/ -lft -I /usr/local/include -L /usr/local/lib/ -lmlx -L /usr/lib/x86_64-linux-gnu -lXext -L /usr/lib/x86_64-linux-gnu -lX11
 
 $(OBJ): %.o: %.c fdf.h
 	clang $(FLAGS) -c $<
@@ -28,4 +28,4 @@ clean:
 	rm -rf *~ *.o
 fclean: clean
 	rm -f fdf
-re:fclean make
+re:fclean all

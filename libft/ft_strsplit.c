@@ -40,6 +40,7 @@ static	size_t	arr_num(char const *s, char c)
 	j = 0;
 	if (s[i] != c)
 		j++;
+	i++;
 	while (s[i])
 	{
 		if ((s[i] != c) && (s[i - 1] == c))
