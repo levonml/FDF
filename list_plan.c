@@ -26,30 +26,30 @@ int		y_p(t_list *map, t_data data)
 	return (data.y * ZOOM + 250);
 }
 
-t_iso	*list_pl(t_list *temp, t_data data, t_iso *plan, t_iso *temp_plan)
+t_iso	*list_pl(t_list *temp, t_data d, t_iso *plan, t_iso *temp_plan)
 {
-	t_iso	*curr_node;
+	t_iso	*curr;
 
-	data.y = 0;
+	d.y = 0;
 	while (temp)
 	{
-		data.x = 0;
-		while (data.x < temp->content_size)
+		d.x = 0;
+		while (d.x < temp->content_size)
 		{
-		  curr_node = node(x_p(data), y_p(temp, data), (temp->content_size - data.x - 1));
-			if (data.x == 0 && data.y == 0)
+			curr = node(x_p(d), y_p(temp, d), (temp->content_size - d.x - 1));
+			if (d.x == 0 && d.y == 0)
 			{
-				temp_plan = curr_node;
+				temp_plan = curr;
 				plan = temp_plan;
 			}
 			else
 			{
-				temp_plan->next = curr_node;
-				temp_plan = curr_node;
+				temp_plan->next = curr;
+				temp_plan = curr;
 			}
-			data.x++;
+			d.x++;
 		}
-		data.y++;
+		d.y++;
 		temp = temp->next;
 	}
 	return (plan);
