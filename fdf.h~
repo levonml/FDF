@@ -6,7 +6,7 @@
 /*   By: lstepany <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 12:40:51 by lstepany          #+#    #+#             */
-/*   Updated: 2020/11/09 10:14:45 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/11/03 12:45:06 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,23 @@ typedef struct	s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	int			step;
+	int		step;
 	size_t		count;
 	float		x;
 	float		y;
-	int			*line_int;
+	int		*line_int;
 	char		*line;
 }				t_data;
 typedef	struct	s_iso
 {
-	float			x;
-	float			y;
-	size_t			content_size;
+	float		x;
+	float		y;
+	size_t		content_size;
 	struct s_iso	*next;
 }				t_iso;
 typedef struct	s_param
 {
-	int				fd;
+	int			fd;
 	t_data			data;
 	t_list			*map;
 	t_iso			*iso;

@@ -6,7 +6,7 @@
 /*   By: lstepany <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 20:04:48 by lstepany          #+#    #+#             */
-/*   Updated: 2020/11/09 10:13:37 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/11/03 12:17:19 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	validate_arr(char *arr)
 
 int	*convert(char *str, float *count)
 {
-	char		**split;
+	char			**split;
 	int			*arr;
 
 	if (!(split = ft_strsplit(str, ' ')))
