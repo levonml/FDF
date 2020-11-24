@@ -6,7 +6,7 @@
 /*   By: lstepany <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 12:40:51 by lstepany          #+#    #+#             */
-/*   Updated: 2020/11/09 10:14:45 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/11/24 16:41:51 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "libft/libft.h"
 # include "mlx.h"
 
-typedef struct	s_data
+typedef struct		s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -28,15 +28,15 @@ typedef struct	s_data
 	float		y;
 	int			*line_int;
 	char		*line;
-}				t_data;
-typedef	struct	s_iso
+}					t_data;
+typedef	struct		s_iso
 {
 	float			x;
 	float			y;
 	size_t			content_size;
 	struct s_iso	*next;
-}				t_iso;
-typedef struct	s_param
+}					t_iso;
+typedef struct		s_param
 {
 	int				fd;
 	t_data			data;
@@ -44,13 +44,13 @@ typedef struct	s_param
 	t_iso			*iso;
 	t_iso			*plan;
 	t_list			*map1;
-}				t_param;
+}					t_param;
 t_iso				*next_row(t_iso *ord);
 void				final(t_iso *abs, t_iso *ord, t_data data);
 void				drow_iso(t_param *param);
 void				drow_plan(t_param *param);
-int				ft_abs(float a);
-int				key_control(int key, void *param);
+int					ft_abs(float a);
+int					key_control(int key, void *param);
 t_list				*get_map(int fd, t_data data, t_list *temp, t_list *temp1);
 void				drow_line(t_iso m1, t_iso m2, t_data data);
 t_iso				*list_is(t_list *t, t_data data, t_iso *iso, t_iso *iso1);

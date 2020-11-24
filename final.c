@@ -6,7 +6,7 @@
 /*   By: lstepany <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 19:50:21 by lstepany          #+#    #+#             */
-/*   Updated: 2020/11/03 12:30:15 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/11/24 20:13:12 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	drow_horizontal(t_iso *abs, t_data data)
 {
+	if (abs && !abs->next)
+		drow_line(*abs, *abs, data);
 	while (abs->next)
 	{
 		if (abs->content_size > 0)

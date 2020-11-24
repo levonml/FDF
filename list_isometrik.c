@@ -6,7 +6,7 @@
 /*   By: lstepany <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 20:22:29 by lstepany          #+#    #+#             */
-/*   Updated: 2020/11/03 12:26:16 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/11/24 20:16:19 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int		x_i(t_data data)
 {
-	return ((data.x - data.y) * ZOOM + 400);
+	return ((data.x - data.y) * ZOOM + 800);
 }
 
 int		y_i(t_list *map, t_data data)

@@ -6,7 +6,7 @@
 #    By: lstepany <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/03 12:50:03 by lstepany          #+#    #+#              #
-#    Updated: 2020/11/03 12:50:05 by lstepany         ###   ########.fr        #
+#    Updated: 2020/11/09 10:19:34 by lstepany         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,8 +16,7 @@ FLAGS = -Wall -Wextra -Werror
 all: fdf
 fdf: $(OBJ)
 	make -C libft
-	clang  $(FLAGS) -g -o fdf $(OBJ) -L libft/ -lft -I /usr/local/include -L /usr/local/lib/ -lmlx -L /usr/lib/x86_64-linux-gnu -lXext -L /usr/lib/x86_64-linux-gnu -lX11
-
+	clang  $(FLAGS) -g -o fdf $(OBJ) -L libft/ -lft -I /usr/local/include -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
 $(OBJ): %.o: %.c fdf.h
 	clang $(FLAGS) -c $<
 

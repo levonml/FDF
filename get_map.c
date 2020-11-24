@@ -6,7 +6,7 @@
 /*   By: lstepany <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 20:04:48 by lstepany          #+#    #+#             */
-/*   Updated: 2020/11/09 10:13:37 by lstepany         ###   ########.fr       */
+/*   Updated: 2020/11/24 16:40:26 by lstepany         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "fdf.h"
 #include <stdlib.h>
 
-int	validate_arr(char *arr)
+int		validate_arr(char *arr)
 {
 	int			i;
 
@@ -30,7 +30,7 @@ int	validate_arr(char *arr)
 	return (i);
 }
 
-int	*convert(char *str, float *count)
+int		*convert(char *str, float *count)
 {
 	char		**split;
 	int			*arr;
@@ -61,7 +61,7 @@ int	*convert(char *str, float *count)
 
 t_list	*get_map(int fd, t_data data, t_list *map, t_list *temp)
 {
-	t_list			*curr_node;
+	t_list		*curr_node;
 
 	data.count = 0;
 	while (get_next_line(fd, &data.line) == 1)
